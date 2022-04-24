@@ -1,0 +1,47 @@
+#!/bin/zsh
+
+[[ $TRACE != 0 && $TRACE != false ]] && set -x
+
+chromedriver_version () {
+  OS=$(uname -a)
+
+  # Get current browser version for Linux-based OS (ex: Debian/Ubuntu)
+  if [[ "${OS}" == *"Linux"* ]]; then
+    BROWSER_NAME=$(google-chrome-stable --version)
+
+  # Get current browser version for Darwin-based OS (ex: MacOS/OSX)
+  elif [[ "${OS}" == *"Darwin"* ]]; then
+    BROWSER_NAME=$(/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version)
+  fi
+
+  BROWSER_FULL_VERSION=$(awk -F' ' '{print $3}' <<< $BROWSER_NAME)
+  BROWSER_MAJOR_VERSION=$(awk -F'.' '{print $1}' <<< $BROWSER_FULL_VERSION)
+
+  # Get the latest stable driver version based on current browser version
+  URL="https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${BROWSER_MAJOR_VERSION}"
+  DRIVER_VERSION=$(curl -s "${URL}")
+  echo $DRIVER_VERSION
+}
+
+pre-requisites () {
+  export WORKSPACE=${WORKSPACE:=$PWD}
+
+  export INSTANCE=${INSTANCE:=uat}
+  export PLATFORM=${PLATFORM:=desktop}
+  export COUNTRY=${COUNTRY:=ID}
+
+  export RESULTS_PATH=${RESULTS_PATH:=tmp/results}
+  export REPORTS_PATH=${REPORTS_PATH:=tmp/reports}
+  export SESSION_PATH=${SESSION_PATH:=tmp/session}
+  # https://gs.statcounter.com/screen-resolution-stats
+  export SCREEN_X=${SCREEN_X:=0}
+  export SCREEN_Y=${SCREEN_Y:=0}
+  export SCREEN_WIDTH=${SCREEN_WIDTH:=1366}
+  export SCREEN_HEIGHT=${SCREEN_HEIGHT:=768}
+  export VIEWPORT_TYPE=${VIEWPORT_TYPE:=Desktop}
+
+  export HEADLESS=${HEADLESS:=0}
+  export DRIVER_VERSION=$(chromedriver_version)
+
+  source scripts/environments/$INSTANCE.environments
+}

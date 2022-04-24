@@ -1,0 +1,13 @@
+{
+  "sx": {
+    "identity_card_type": {
+      "KTP": 3,
+      "SIM": 4,
+      "NPWP": 5,
+      "Paspor": 6,
+      "NPWP Pasangan": 21,
+      "NPWP Orang Tua": 22,
+      "Other": 9993
+    }
+  }
+}

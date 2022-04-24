@@ -1,0 +1,9 @@
+{
+  "sx": {
+    "identity_card_type": {
+      "NRIC": 1,
+      "Passport": 2,
+      "Other": 9991
+    }
+  }
+}

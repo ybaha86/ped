@@ -1,0 +1,11 @@
+{
+  "sx": {
+    "identity_card_type": {
+      "MyKad": 7,
+      "Driving Licence": 8,
+      "Tax Identification": 9,
+      "Passport": 10,
+      "Other": 9995
+    }
+  }
+}
