@@ -8,6 +8,6 @@ export class itemDetailsPage extends BaseUI{
   }
 
   buyItem(){
-    this.click($(this.element.buyButton))
+    browser.pause(5000); this.click($(this.element.buyButton))
   }
 }
