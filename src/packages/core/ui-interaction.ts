@@ -37,6 +37,14 @@ export abstract class UIInteraction {
     return result;
   }
 
+
+  protected awaitElemToDisplay (element: WebdriverIO.Element){
+    browser.waitUntil(
+      () => (element.isDisplayed()),{timeout: parseInt(process.env.WAITTIME_TIMEOUT ?process.env.WAITTIME_TIMEOUT :'900000')}
+    );
+    return this
+  }
+
   protected await (element: WebdriverIO.Element, {
     report = false,
     reverse = false,
@@ -68,6 +76,7 @@ export abstract class UIInteraction {
     report = true,
     avoidLinkText = true
   } = {}) {
+    this.awaitElemToDisplay(element);
     this.await(element);
 
     avoidLinkText ? element.click({ x: 5, y: 5}) : element.click();  // prevent clicking on linked text in the center of the element

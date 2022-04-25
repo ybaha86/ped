@@ -11,14 +11,7 @@ const waittime = {
   timeout: parseInt(process.env.WAITTIME_TIMEOUT!)
 };
 
-const tag_expression: { [id: string]: string } = {
-  'ID': ' and (@ID or (not @MY and not @SG and not @TH and not @ZI and not @ZU))',
-  'MY': ' and (@MY or (not @ID and not @SG and not @TH and not @ZI and not @ZU))',
-  'SG': ' and (@SG or (not @ID and not @MY and not @TH and not @ZI and not @ZU))',
-  'TH': ' and (@TH or (not @ID and not @MY and not @SG and not @ZI and not @ZU))',
-  'ZI': ' and (@ZI or (not @ID and not @MY and not @SG and not @TH and not @ZU))',
-  'ZU': ' and (@ZU or (not @ZI and not @ID and not @MY and not @SG and not @TH))',
-};
+const tag_expression: { [id: string]: string } = {};
 
 if (process.env.INTERCEPTOR && !['0', 'false'].includes(process.env.INTERCEPTOR)) {
   services.push('intercept');

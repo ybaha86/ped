@@ -17,10 +17,9 @@ defineStep('User Login with credential {string} {string} {string}', function(thi
 defineStep('Search Product {string}', function(this:QA.Core, product:string){
   this.getContext<QA.tokped.Context>(QA.tokped.Context)
 
-  const _product = (product) ? product :'Macbook Pro 2020';
+  const _product = (product) ? product :'Bola Futsal 4';
   this.getUI<QA.tokped.BaseUI>(QA.tokped.BaseUI)
     .searchProduct(_product)
-    // .selectDelivery()
     .closeInfoBanner()
 });
 
@@ -48,4 +47,10 @@ defineStep('Purchase selected item', function(this:QA.Core){
   this.getContext<QA.tokped.Context>(QA.tokped.Context)
   this.getUI<QA.tokped.itemDetailsPage>(QA.tokped.itemDetailsPage)
     .buyItem()
+})
+
+defineStep('Change payment method', function(this:QA.Core){
+  this.getContext<QA.tokped.Context>(QA.tokped.Context)
+  this.getUI<QA.tokped.itemBuy>(QA.tokped.itemBuy)
+    .changePayment()
 })
