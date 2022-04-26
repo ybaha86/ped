@@ -5,13 +5,13 @@
 - declaring environment variable
   - export toped_email='youremail@gmail.com'
   - export toped_password='Password'
-  - export toped_secret='256HDW3DUMMYSECRET' (retreive the secret during the activation of google authentication)
+  - export toped_secret='Kmw63onmts4hmmnq' (retreive the secret during the activation of google authentication)
 ## Prepare Project for Development
 
 - Clone the project
 
   ```sh
-  % git clone git@github.com:fahdilahady/tped.git
+  % git clone git@github.com:ybaha86/ped.git
   ```
 
 - Prepare the project
