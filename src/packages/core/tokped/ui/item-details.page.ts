@@ -9,5 +9,11 @@ export class itemDetailsPage extends BaseUI{
 
   buyItem(){
     browser.pause(5000); this.click($(this.element.buyButton))
+    browser.waitUntil(() => {
+      const pageUrl = browser.getUrl();
+      console.log(pageUrl)
+      return pageUrl.indexOf('jam-tangan') > -1
+    })
+    return this
   }
 }

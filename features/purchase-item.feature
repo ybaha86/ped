@@ -6,6 +6,6 @@ Feature: Tokopedia Purchase Random Item
     * User Login with credential "yunus.bahar86@gmail.com" "Vespalx150ie" "Kmw63onmts4hmmnq"
     * Search Product "seiko jam tangan"
     * Short search result based on "4"
-    * select item by index "1"
+    * select item by index "2"
     * Purchase selected item
     * Change payment method
